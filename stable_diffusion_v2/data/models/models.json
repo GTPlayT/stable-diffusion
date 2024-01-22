@@ -1,0 +1,4 @@
+{
+    "anime real": "stable_diffusion_v2/data/models/0001softrealistic_v154xxx.safetensors",
+    "softrealistic": "stable_diffusion_v2/data/models/animeArtDiffusionXL_alpha3.safetensors"
+}
