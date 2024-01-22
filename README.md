@@ -1,37 +1,13 @@
----
-jupyter:
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
-  language_info:
-    codemirror_mode:
-      name: ipython
-      version: 3
-    file_extension: .py
-    mimetype: text/x-python
-    name: python
-    nbconvert_exporter: python
-    pygments_lexer: ipython3
-    version: 3.9.13
-  nbformat: 4
-  nbformat_minor: 2
----
-
-::: {.cell .markdown}
 # Stable Diffusion demo
-:::
 
-::: {.cell .markdown}
+
 In this notebook, I will demostrate my Stable Diffusion code. To get
 started, first install the model which is used in demostration from this
 URL: <https://civitai.com/models/117259/anime-art-diffusion-xl> and
 store this model in **stable_diffusion_v2/data/models**. Various other
 models can also be downloaded and run using this code. However, you have
 to update the json file stored as **models.json** in the same folder.
-:::
 
-::: {.cell .markdown}
 ## Required Frameworks
 
 I will mention the public frameworks I used in this section to get the
@@ -53,39 +29,27 @@ To make it being able to be used with public models in
 ##### transformers (pip install transformers)
 
 To tokenize the prompts for the clip model.
-:::
 
-::: {.cell .code execution_count="1"}
 ``` python
 from stable_diffusion_v2 import StableDiffusion as sd
 ```
-:::
 
-::: {.cell .markdown}
 ## Available Samplers
-:::
 
-::: {.cell .markdown}
 For demonstration puproses, I am using 2 samplers and there are multiple
 samplers available as well in **stab_diffusion_v2/samplers** and they
 can be accessed as well.
-:::
 
-::: {.cell .markdown}
 ### Denoising Diffusion Probabilistic Models (DDPM)
 
 The above paper can be accessed using the following link, which provides
 the formula for variance, step and mean:
 <https://arxiv.org/pdf/2006.11239.pdf>.
-:::
 
-::: {.cell .code execution_count="5"}
 ``` python
 model_ddpm = sd(model="anime real", sampler_name="ddpm", device="cpu")
 ```
-:::
 
-::: {.cell .markdown}
 ### Euler Ancestral
 
 I was not able to find the link to the original sample paper. As this is
@@ -93,50 +57,37 @@ one of the most popular samplers available in Stable Diffusion
 community, I implemented it using the following documentation by Hugging
 Face:
 <https://huggingface.co/docs/diffusers/api/schedulers/euler_ancestral>.
-:::
 
-::: {.cell .code execution_count="6"}
 ``` python
 model_kea = sd(model="anime real", sampler_name="kea", device="cpu")
 ```
-:::
 
-::: {.cell .markdown}
 ## Prompts and Unconditional (Negative) Prompts
 
 Alongside prompts and unconditional prompts, the user is able to
 customize the number of sampling steps and the classifier free guidance
 (cfg) by using *cfg=7*. For demonstration purposes, sampling steps are
 set as 30 for the samplers and cfg scale is 7.
-:::
 
-::: {.cell .code execution_count="7"}
 ``` python
 prompt="Boy wearning black dress with a white background"
 uncond_prompt="jewelery and poor quality image"
 ```
-:::
 
-::: {.cell .markdown}
 ## Image Generation
 
 I will use the samplers to demonstrate the image generation in this
 section.
-:::
 
-::: {.cell .markdown}
 ### Image Generation through DDPM Sampler
-:::
 
-::: {.cell .code execution_count="8"}
 ``` python
 image_ddpm = model_ddpm.generate(prompt=prompt, uncond_prompt=uncond_prompt)
 image_ddpm
 ```
 
-::: {.output .stream .stderr}
     100%|██████████| 30/30 [14:19<00:00, 28.63s/it]
-:::
+
 
 ::: {.output .execute_result execution_count="8"}
 ![](vertopal_7c588a0bc470452d9347b2146355e67b/f38aa7178dff1be5b5b428315c1647145db73b3e.png)
