@@ -89,53 +89,30 @@ image_ddpm
     100%|██████████| 30/30 [14:19<00:00, 28.63s/it]
 
 
-::: {.output .execute_result execution_count="8"}
 ![](vertopal_7c588a0bc470452d9347b2146355e67b/f38aa7178dff1be5b5b428315c1647145db73b3e.png)
-:::
-:::
 
-::: {.cell .markdown}
 ### Image Generation through Euler Ancestral Sampler
-:::
 
-::: {.cell .code execution_count="9"}
 ``` python
 image_kea = model_kea.generate(prompt=prompt, uncond_prompt=uncond_prompt)
 image_kea
 ```
 
-::: {.output .stream .stderr}
     100%|██████████| 30/30 [12:34<00:00, 25.16s/it]
-:::
 
-::: {.output .execute_result execution_count="9"}
 ![](vertopal_7c588a0bc470452d9347b2146355e67b/5ca9ef924d8492ab45258e13792e8f056518e078.png)
-:::
-:::
 
-::: {.cell .markdown}
 ## Varying an Image Using Samplers
 
 We can also trick the model into creating variants of image provided
 using the prompts and unconditional prompts.
-:::
 
-::: {.cell .code execution_count="11"}
 ``` python
 image_edit = model_ddpm.generate(input_image=image_kea, prompt=prompt, uncond_prompt=uncond_prompt)
 image_edit
 ```
 
-::: {.output .stream .stderr}
     100%|██████████| 24/24 [11:09<00:00, 27.89s/it]
-:::
 
-::: {.output .execute_result execution_count="11"}
 ![](vertopal_7c588a0bc470452d9347b2146355e67b/921888b47a7a5a7494739a1a6705bb983a69ff07.png)
-:::
-:::
 
-::: {.cell .code}
-``` python
-```
-:::
